@@ -1,0 +1,27 @@
+#define MOVE_TIME 480 //timp pentru mers inante
+#define TURN_TIME 360 //timp pentru a se intoarce cu 90°
+task main()
+{
+while(true)
+{
+OnFwd(OUT_AC, 80);//start motoare AC, robotul se misca inainte
+Wait(MOVE_TIME);
+if (Random() >= 0)//aleg nr. o, daca informatia sau alt nr ales impus de traseu este mai mic ca 0 executa un viraj la dreapta, altfel executa viraj la stanga
+{
+OnRev(OUT_C, 80);
+}
+else
+{
+OnRev(OUT_A, 80);
+}
+Wait(TURN_TIME);
+}
+{
+OnFwd(OUT_B, 28);//mtor B setat ca iesire, axul se roteste intr-un sens
+Wait(3800); //asteapta 3,8 s
+OnRev(OUT_B, 28);//motor B setat ca iesire, axul se roteste in sens invers
+Wait(3800);
+Off(OUT_B);
+}
+}
+
